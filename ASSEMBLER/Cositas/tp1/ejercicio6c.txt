@@ -1,0 +1,38 @@
+      ORG 3000H
+MUL:  MOV DX, 0
+      MOV CH, [BX]
+      MOV BX, AX
+      MOV CL, [BX]
+      
+      CMP CH, CL
+      JNS BUNSP ; Si CH ES MAS GRANDE QUE CL SALTA
+      XOR CH, CL
+      XOR CL, CH
+      XOR CH, CL
+BUNSP:CMP CL, 0
+      JZ BUFN
+BUML: ADD DL, CH
+      ADC DH, 0
+      DEC CL
+      JNZ BUML
+BUFN: ret
+
+
+
+      RET
+      
+      ORG 1000H
+
+      NUM1 DB 15
+      NUM2 DB 17
+      RES  DB ?
+
+      ORG 2000H
+
+      MOV AX, OFFSET NUM1
+      MOV BX, OFFSET NUM2
+      CALL MUL
+  
+FIN:  MOV RES, DL
+      HLT
+      END

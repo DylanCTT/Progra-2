@@ -1,0 +1,74 @@
+      ORG 3000H
+ROTARDERN:
+      PUSH AX
+      PUSH BX
+      PUSH CX
+      PUSH DX
+      MOV BX, SP
+      ADD BX, 10
+
+      MOV DX, [BX]
+      ADD BX, 2
+
+      MOV CX, [BX]
+      ADD BX, 2
+      
+      MOV AX, [BX]
+      SUB BX, 4
+      
+      NEG CX
+      JZ FINROTARDERN
+      ADD CX, 16
+      JZ FINROTARDERN
+BUCLEROTARDERN:
+      ADD AX, AX
+      ADC AX, 0
+      DEC CX
+      JNZ BUCLEROTARDERN
+
+FINROTARDERN:
+      MOV [BX], AX
+      POP DX
+      POP CX
+      POP BX
+      POP AX
+      RET
+      
+      ORG 1000H
+PIO   EQU 30H
+      ORG 2000H
+      MOV AL, 0H
+      OUT PIO + 3, AL
+      MOV BX, 1
+      MOV AX, 1
+      MOV CX, 0
+BUCLE:
+      OUT PIO + 1, AL      
+      CMP AL, 128
+      JZ DER
+      CMP AL, 1
+      JNZ CONTINUARBUCLE2
+      MOV CX, 0
+      JMP CONTINUARBUCLE2
+DER:
+      MOV CX, 1
+      JMP CONTINUARBUCLE2
+      
+CONTINUARBUCLE2:
+
+      CMP CX, 0
+      JZ MUL
+      PUSH AX
+      PUSH BX
+      PUSH DX
+      CALL ROTARDERN
+      POP AX
+      POP BX
+      POP DX
+      
+      JMP BUCLE
+MUL:
+      ADD AL, AL
+      JMP BUCLE
+      HLT 
+      END

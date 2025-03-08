@@ -1,0 +1,46 @@
+        ORG 3000H
+IMPAR:
+        PUSH BX
+        MOV BX, SP
+        ADD BX, 6
+        PUSH AX
+        ;procesamiento de si es impar o no
+        MOV AX, [BX]
+        MOV CX, 1
+        AND CX, AX
+        CMP CX, 1  
+        POP AX
+        POP BX
+        RET
+        
+
+        ORG 1000H
+TABLA 	 DB 1,4,5,3,10,7,14,78,23,18
+FINTABLA DB ?
+
+        ORG 2000H
+
+        MOV DX, OFFSET TABLA
+        NEG DX
+        ADD DX, OFFSET FINTABLA
+        CMP DX, 0
+        JZ FIN
+        MOV AX, 0
+        MOV BX, OFFSET TABLA
+        MOV CX, 0
+        
+BUCLE:  MOV AX, [BX]
+        PUSH AX
+        PUSH CX
+        CALL IMPAR
+        ADD CX, 0FFFFH
+        POP CX
+        ADC CX, 0 ;meeo
+        POP AX
+        INC BX
+        DEC DX
+        JNZ BUCLE
+        
+FIN:    HLT
+        END
+        

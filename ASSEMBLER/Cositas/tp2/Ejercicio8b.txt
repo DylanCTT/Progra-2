@@ -1,0 +1,63 @@
+      ORG 3000H
+IMPRIMIR:
+      PUSH AX
+      PUSH BX
+      PUSH CX
+      PUSH DX
+
+      MOV BX, SP
+      ADD BX, 10
+
+      MOV BX, [BX]
+      MOV CX, BX
+      MOV AL, 0
+      CMP BYTE PTR [BX], 0
+      JZ EJECUTARIMPRIMIR
+BUCLEIMPRIMIR:
+
+      INC AL
+      INC BX
+      CMP BYTE PTR[BX], 0
+      JNZ BUCLEIMPRIMIR
+
+EJECUTARIMPRIMIR:
+
+      MOV BX, CX
+      INT 7
+
+FINIMPRIMIR:
+      POP DX
+      POP CX
+      POP BX
+      POP AX
+      RET
+
+
+      
+      ORG 1000H
+PIO   EQU 30H
+KON   DB "LLAVE ENCENDIDA", 0
+KOFF  DB "LLAVE APAGADA", 0
+      ORG 2000H
+
+      MOV AL, 0FFH
+      OUT PIO + 2, AL
+      IN AL, PIO
+      AND AL, 10000000B
+      CMP AL, 10000000B
+      JZ LLAVEENCENDIDA
+
+      MOV BX, OFFSET KOFF
+      PUSH BX
+      CALL IMPRIMIR
+      POP BX
+      JMP FIN
+      
+LLAVEENCENDIDA:
+      MOV BX, OFFSET KON
+      PUSH BX
+      CALL IMPRIMIR
+      POP BX
+FIN:
+      HLT
+      END

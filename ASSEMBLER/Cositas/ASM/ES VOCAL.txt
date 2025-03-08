@@ -1,0 +1,32 @@
+ESVOCAL:  PUSH BX
+          MOV BX, SP
+          ADD BX, 6
+          PUSH AX
+          PUSH CX
+          PUSH DX
+
+          MOV CL, [BX]; LETRA
+          SUB BX, 2
+          MOV AX, BX ; DIRECCION DE RESULTADO
+          PUSH AX
+          MOV AX, OFFSET FINVOCALES
+          SUB AX, OFFSET VOCALES
+          MOV BX, OFFSET VOCALES
+          MOV DX, 0FFFFH
+BUCLEESVOCAL:
+          CMP [BX], CL
+          JZ FINBUCLEESVOCAL
+          INC BX
+          DEC AX
+          JNZ BUCLEESVOCAL
+          MOV DX, 0
+FINBUCLEESVOCAL:      
+          POP AX
+          MOV BX, AX
+          MOV [BX], DX
+          POP DX
+          POP CX
+          POP AX
+          POP BX
+          
+          RET

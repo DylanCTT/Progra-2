@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Grupal
+comment1.params=nroVisita\ F\ ES\ lugarSalida
+comment1.target=Grupal(int,\ Fecha,\ boolean,\ java.lang.String)
+comment2.params=
+comment2.target=Grupal()
+comment3.params=
+comment3.target=java.lang.String\ getLugarSalida()
+comment4.params=lugarSalida
+comment4.target=void\ setLugarSalida(java.lang.String)
+comment5.params=P
+comment5.target=void\ agregarIntegrante(Persona)
+comment6.params=
+comment6.target=double\ calcularCostoTotal()
+comment7.params=
+comment7.target=java.lang.String\ toString()
+numComments=8

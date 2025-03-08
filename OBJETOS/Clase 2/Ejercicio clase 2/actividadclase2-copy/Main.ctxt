@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Main
+comment1.params=VP
+comment1.target=int\ Mayores(Persona[])
+comment2.params=VP
+comment2.target=Persona\ Min(Persona[])
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

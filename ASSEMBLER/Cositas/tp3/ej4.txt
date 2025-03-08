@@ -1,0 +1,40 @@
+PIC EQU 20H
+
+      ORG 1000H
+F10 DB 0
+VECTOR DB "VAMOS LAS INTERRUPCIONES!", 10
+FIN    DB ? ;LF
+      ORG 4H
+      DW INTERRUPCIONF10
+      
+      ORG 3000H
+INTERRUPCIONF10:
+      CLI
+      CMP F10, 5
+      JZ FININTERRUPCIONF10
+      PUSH AX
+      PUSH BX
+      MOV BX, OFFSET VECTOR
+      MOV AX, OFFSET FIN - OFFSET VECTOR
+      INT 7
+      MOV AL, 20H
+      OUT PIC, AL
+      INC F10
+      POP BX
+      POP AX
+      STI
+FININTERRUPCIONF10:
+      IRET
+      
+      ORG 2000H
+      MOV AL, 11111110B
+      OUT PIC + 1, AL
+      MOV AL, 1H
+      OUT PIC + 4, AL
+BUCLE:
+      CMP F10, 5
+      JNZ BUCLE
+      
+      
+      HLT
+      END

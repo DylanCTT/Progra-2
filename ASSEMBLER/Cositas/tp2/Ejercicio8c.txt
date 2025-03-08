@@ -1,0 +1,13 @@
+      ORG 1000H
+PIO   EQU 30H
+      ORG 2000H
+      MOV AL, 0FFH
+      OUT PIO + 2, AL
+      MOV AL, 0H
+      OUT PIO + 3, AL      
+BUCLE:
+      IN AL, PIO
+      OUT PIO + 1, AL
+      JMP BUCLE
+      HLT
+      END

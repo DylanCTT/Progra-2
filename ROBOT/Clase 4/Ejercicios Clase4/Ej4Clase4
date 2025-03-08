@@ -1,0 +1,98 @@
+programa Ej4Clase4
+procesos
+  proceso VerificoGanador(ES max: numero;ES Nmax:numero)
+  variables
+    ca:numero
+    av:numero
+  comenzar
+    repetir 4
+      RecibirMensaje(av,*)
+      si (av=4)
+        RecibirMensaje(ca,R1)
+        si (ca>max)
+          max:=ca
+          Nmax:=1
+      si(av=6)
+        RecibirMensaje(ca,R2)
+        si (ca>max)
+          max:=ca
+          Nmax:=2
+      si(av=8)
+        RecibirMensaje(ca,R3)
+        si (ca>max)
+          max:=ca
+          Nmax:=3
+      si(av=10)
+        RecibirMensaje(ca,R4)
+        si (ca>max)
+          max:=ca
+          Nmax:=4
+  fin
+areas
+  av4: AreaP (4,1,4,100)
+  av6: AreaP (6,1,6,100)
+  av8: AreaP (8,1,8,100)
+  av10: AreaP (10,1,10,100)
+  acor:AreaP(1,1,1,1)
+  esq:AreaC(11,11,11,11)
+  
+robots
+  robot corredor
+  variables
+    HayPapel:boolean
+    avO:numero
+    caO:numero
+  comenzar
+    HayPapel:= ~HayPapelEnLaEsquina
+    avO:=PosAv
+    caO:=PosCa
+    mientras (PosCa<100)& HayPapel
+      mientras HayPapel
+        BloquearEsquina(11,11)
+        Pos(11,11)
+        si HayPapelEnLaEsquina
+          tomarPapel
+        HayPapel:= HayPapelEnLaEsquina
+        Pos(avO,caO)
+        LiberarEsquina(11,11)
+        si HayPapelEnLaBolsa
+          depositarPapel
+          si PosCa<100
+            mover
+            caO:=caO+1
+    EnviarMensaje(avO,coordinador)
+    EnviarMensaje(caO,coordinador)
+  fin
+  robot cordi
+  variables
+    max:numero
+    Nmax:numero
+  comenzar
+    max:=-1
+    VerificoGanador(max,Nmax)
+    Informar(Nmax)
+    Informar(max)
+  fin
+  
+variables
+  R1:corredor
+  R2:corredor
+  R3:corredor
+  R4:corredor
+  coordinador:cordi
+comenzar
+  AsignarArea(R1,av4)
+  AsignarArea(R2,av6)
+  AsignarArea(R3,av8)
+  AsignarArea(R4,av10)
+  AsignarArea(R1,esq)
+  AsignarArea(R2,esq)
+  AsignarArea(R3,esq)
+  AsignarArea(R4,esq)
+  AsignarArea(coordinador,acor)
+  Iniciar(R1, 4,1)
+  Iniciar(R2, 6,1)
+  Iniciar(R3, 8,1)
+  Iniciar(R4, 10,1)
+  Iniciar(coordinador,1,1)
+fin

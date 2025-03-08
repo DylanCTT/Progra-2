@@ -1,0 +1,90 @@
+programa ejemplo
+procesos
+  proceso recorrerAvenida(E numAv: numero)
+  comenzar
+    Pos(numAv, 1)
+    repetir 99
+      mover
+  fin
+areas
+  ciudadPap: AreaPC (1,1,5,10)
+  ciudadFlor: AreaPC (6,1,10,9)
+  comp:AreaC(10,10,10,10)
+  pap1:AreaP(8,10,8,10)
+  pap2:AreaP(9,10,9,10)
+  flo1:AreaP(7,10,7,10)
+  flo2:AreaP(6,10,6,10)
+robots
+  robot florero
+  variables
+    av:numero
+    ca:numero
+    avO:numero
+    caO:numero
+  comenzar
+    avO:=PosAv
+    caO:=PosCa
+    repetir 3
+      Random(av,6,10)
+      Random(ca,1,9)
+      BloquearEsquina(av,ca)
+      Pos(av,ca)
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+      Pos(avO,caO)
+      LiberarEsquina(av,ca)
+    mientras HayFlorEnLaBolsa
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      depositarFlor
+      Pos(avO,caO)
+      LiberarEsquina(10,10)
+  fin
+  robot papelero
+  variables
+    av:numero
+    ca:numero
+    avO:numero
+    caO:numero
+  comenzar
+    avO:=PosAv
+    caO:=PosCa
+    repetir 5
+      Random(av,1,5)
+      Random(ca,1,10)
+      BloquearEsquina(av,ca)
+      Pos(av,ca)
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+      Pos(avO,caO)
+      LiberarEsquina(av,ca)
+    mientras HayPapelEnLaBolsa
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      depositarPapel
+      Pos(avO,caO)
+      LiberarEsquina(10,10)
+  fin
+variables
+  rp1: papelero
+  rp2:papelero
+  rf1:florero
+  rf2:florero
+comenzar
+  AsignarArea(rp1, ciudadPap)
+  AsignarArea(rp1,pap1)
+  AsignarArea(rp2, ciudadPap)
+  AsignarArea(rp2, pap2)
+  AsignarArea(rf1,ciudadFlor)
+  AsignarArea(rf1,flo1)
+  AsignarArea(rf2,ciudadFlor)
+  AsignarArea(rf2,flo2)
+  AsignarArea(rp1,comp)
+  AsignarArea(rp2,comp)
+  AsignarArea(rf1,comp)
+  AsignarArea(rf2,comp)
+  Iniciar(rf1,7,10)
+  Iniciar(rf2,6,10)
+  Iniciar(rp1, 8,10)
+  Iniciar(rp2,9,10)
+fin

@@ -1,0 +1,28 @@
+      ORG 1000H
+
+      NUM1 DB 15
+      NUM2 DB 17
+      RES  DB ?
+
+      ORG 2000H
+
+      MOV CL, NUM1
+      MOV CH, NUM2
+      MOV AX, 0
+  
+      CMP CH, CL
+      JNS NSWP ; Si CH ES MAS GRANDE QUE CL SALTA
+      XOR CH, CL
+      XOR CL, CH
+      XOR CH, CL
+NSWP: CMP CL, 0
+      JZ FIN
+MUL:  ADD AL, CH
+      ADC AH, 0
+      DEC CL
+      JNZ MUL
+
+  
+FIN:  MOV RES, AL
+      HLT
+      END

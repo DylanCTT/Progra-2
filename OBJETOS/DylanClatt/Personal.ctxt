@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Personal
+comment1.params=nroVisita\ F\ ES\ extranjero
+comment1.target=Personal(int,\ Fecha,\ boolean,\ boolean)
+comment2.params=
+comment2.target=Personal()
+comment3.params=
+comment3.target=boolean\ getExtranjero()
+comment4.params=extranjero
+comment4.target=void\ setExtranjero(boolean)
+comment5.params=
+comment5.target=double\ calcularCostoTotal()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

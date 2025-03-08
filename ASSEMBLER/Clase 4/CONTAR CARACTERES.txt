@@ -1,0 +1,50 @@
+        ORG 3000H
+
+CONCAR:
+        PUSH BX
+        MOV BX, SP
+        ADD BX, 6
+        PUSH AX
+        PUSH CX
+        PUSH DX
+
+        MOV CX, [BX] ; DIRECCION DEL STRING
+        SUB BX, 2
+        MOV DX, BX
+        MOV BX, CX
+        MOV CL, 37 ; '%'
+        CMP BX, CX
+        JZ FINCONCAR
+        MOV AX, 0
+        
+BUCLECONCAR:
+        INC AX
+        INC BX
+        CMP [BX], CL
+        JNZ BUCLECONCAR
+        
+FINCONCAR:
+
+        MOV BX, DX
+        MOV [BX], AX
+        POP DX
+        POP CX
+        POP AX
+        POP BX
+        RET
+        
+
+        ORG 1000H
+STRING  DB "HOLA COMO ANDAS%"
+
+        ORG 2000H
+        MOV BX, OFFSET STRING
+        PUSH BX
+        PUSH AX
+        CALL CONCAR
+        POP AX
+        POP BX
+        
+FIN:    HLT
+        END
+        

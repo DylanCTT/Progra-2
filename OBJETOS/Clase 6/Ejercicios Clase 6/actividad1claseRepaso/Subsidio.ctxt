@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Subsidio
+comment1.params=monto\ motivo
+comment1.target=Subsidio(double,\ java.lang.String)
+comment2.params=
+comment2.target=Subsidio()
+comment3.params=
+comment3.target=double\ getMonto()
+comment4.params=
+comment4.target=java.lang.String\ getMotivo()
+comment5.params=
+comment5.target=boolean\ getOtorgado()
+comment6.params=monto
+comment6.target=void\ setMonto(double)
+comment7.params=motivo
+comment7.target=void\ setMotivo(java.lang.String)
+comment8.params=otorgado
+comment8.target=void\ setOtorgado(boolean)
+numComments=9

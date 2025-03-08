@@ -1,0 +1,161 @@
+programa ej2cPower
+  
+procesos
+  proceso AsignarAreas
+  comenzar
+    EnviarMensaje (12,robot1)
+    EnviarMensaje(10,robot1) 
+    EnviarMensaje (16,robot2)
+    EnviarMensaje(10,robot2)
+    EnviarMensaje (20,robot3)
+    EnviarMensaje(10,robot3)
+    EnviarMensaje (24,robot4)
+    EnviarMensaje(10,robot4)
+  fin
+  proceso  contarFlores(ES totFlores:numero)
+  variables
+    floresEsq:numero
+  comenzar
+    floresEsq:=0
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      floresEsq:=floresEsq+1
+    totFlores:=totFlores+floresEsq
+    repetir floresEsq
+      mientras HayFlorEnLaBolsa
+        depositarFlor    
+  fin
+  
+  proceso recorrerYcontar(E base:numero ; E altura:numero ; ES totFlores:numero)
+  comenzar 
+    repetir 2 
+      repetir altura
+        contarFlores(totFlores)
+        mover
+      derecha
+      repetir base
+        contarFlores(totFlores)
+        mover
+      derecha    
+  fin
+  
+areas
+  rectangulo1: AreaP (2,2,2,2)
+  rectangulo2: AreaP (6,2,6,2)
+  rectangulo3: AreaP (10,2,10,2)
+  rectangulo4: AreaP (14,2,14,2)
+  rec11: AreaP (12,10,15,15)
+  rec22:AreaP (16,10,19,15)
+  rec33:AreaP (20,10,23,15)
+  rec44:AreaP (24,10,27,15)
+  areaJefaso: AreaP (1,1,1,1)
+  
+robots
+  robot tipo1
+  variables
+    totFlores:numero
+    av:numero
+    ca:numero
+  comenzar 
+    RecibirMensaje (av,Rjefe)
+    RecibirMensaje(ca, Rjefe)
+    Pos (av,ca)
+    totFlores:=0 
+    recorrerYcontar(3,5,totFlores)
+    EnviarMensaje (totFlores,Rjefe)
+    EnviarMensaje(1,Rjefe)      
+    Informar(totFlores)  
+  fin
+  
+  robot tipo2
+  variables
+    totFlores:numero
+    av:numero
+    ca:numero
+  comenzar
+    RecibirMensaje (av,Rjefe)
+    RecibirMensaje(ca, Rjefe)
+    Pos (av,ca) 
+    totFlores:=0 
+    recorrerYcontar(3,5,totFlores)
+    EnviarMensaje (totFlores,Rjefe)
+    EnviarMensaje(2,Rjefe)      
+    Informar(totFlores)  
+  fin
+  
+  robot tipo3
+  variables
+    totFlores:numero
+    av:numero
+    ca:numero
+  comenzar
+    RecibirMensaje (av,Rjefe)
+    RecibirMensaje(ca, Rjefe)
+    Pos (av,ca) 
+    totFlores:=0 
+    recorrerYcontar(3,5,totFlores)
+    EnviarMensaje (totFlores,Rjefe)
+    EnviarMensaje(3,Rjefe)      
+    Informar(totFlores)  
+  fin
+  
+  robot tipo4
+  variables
+    totFlores:numero
+    av:numero
+    ca:numero
+  comenzar
+    RecibirMensaje (av,Rjefe)
+    RecibirMensaje(ca, Rjefe)
+    Pos (av,ca)
+    totFlores:=0 
+    recorrerYcontar(3,5,totFlores)
+    EnviarMensaje (totFlores,Rjefe)
+    EnviarMensaje(4,Rjefe)   
+    Informar(totFlores)  
+  fin
+  robot Jefe
+  variables
+    totFlores:numero
+    Frobot:numero
+    num:numero
+    NumMax:numero
+    max:numero
+    
+  comenzar
+    AsignarAreas
+    totFlores:=0
+    max:=-1
+    repetir 4
+      RecibirMensaje(Frobot,*)
+      RecibirMensaje(num,*)
+      si (Frobot>max)
+        max:=Frobot
+        NumMax:=num
+      totFlores:=totFlores+Frobot
+    Informar(totFlores)
+    Informar (NumMax)
+  fin
+variables
+  robot1:tipo1
+  robot2:tipo2
+  robot3:tipo3
+  robot4:tipo4
+  Rjefe:Jefe
+  
+comenzar
+  AsignarArea(robot1,rectangulo1)
+  AsignarArea(robot2,rectangulo2)
+  AsignarArea(robot3,rectangulo3)
+  AsignarArea(robot4,rectangulo4)
+  AsignarArea (robot1,rec11)
+  AsignarArea(robot2,rec22)
+  AsignarArea(robot3, rec33)
+  AsignarArea(robot4, rec44)
+  AsignarArea(Rjefe, areaJefaso)
+  Iniciar(robot1, 2,2)
+  Iniciar(robot2, 6,2)
+  Iniciar(robot3, 10,2)
+  Iniciar(robot4, 14,2)
+  Iniciar(Rjefe, 1,1)
+fin

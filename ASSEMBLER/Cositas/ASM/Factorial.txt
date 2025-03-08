@@ -1,0 +1,52 @@
+        ORG 3000H
+FACTORIAL:
+        PUSH BX
+        MOV BX, SP
+        ADD BX, 6
+        PUSH AX
+        PUSH CX
+        PUSH DX
+
+        MOV AX, [BX] ; NUMERO
+        SUB BX, 2
+        MOV BX, [BX] ; PUNTERO RESULTADO
+        MOV DX, 1
+        MOV CX, AX
+        DEC CX
+        CMP AX, 0
+        JZ FINFACTORIAL
+        PUSH CX
+        PUSH BX
+        CALL FACTORIAL
+        POP BX
+        POP CX
+        DEC DX
+BUCLEFACTORIAL:
+        ADD DX, [BX]
+        DEC AX
+        JNZ BUCLEFACTORIAL  
+        
+FINFACTORIAL:
+        MOV [BX], DX
+        POP DX
+        POP CX
+        POP AX
+        POP BX
+        RET
+        
+        ORG 1000H
+NUM     DW  7
+RESULTADO DW ?
+
+        ORG 2000H
+
+        MOV AX, NUM
+        MOV BX, OFFSET RESULTADO
+        PUSH AX
+        PUSH BX
+        CALL FACTORIAL
+        POP BX
+        POP AX
+        
+FIN:    HLT
+        END

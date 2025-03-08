@@ -1,0 +1,68 @@
+      ORG 3000H
+
+MUL:
+      PUSH AX
+      PUSH BX
+      PUSH CX
+      PUSH DX
+
+      
+      ADD SP, 10
+      POP AX
+      POP BX
+      POP CX
+      
+      PUSH CX
+      MOV AX, 0
+      CMP BX, CX
+      JNS CONTMUL
+      XOR BX, CX
+      XOR CX, BX
+      XOR BX, CX
+CONTMUL:
+      CMP CX, 0
+      JZ FINMUL
+      
+BUCLEMUL:
+      ADD AX, BX
+      ADC AX, 0
+      DEC CX
+      JNZ BUCLEMUL  
+      
+      
+FINMUL:
+      PUSH BX
+      PUSH AX
+      SUB SP, 10
+
+      
+      POP DX
+      POP CX
+      POP BX
+      POP AX
+      RET
+
+
+      ORG 1000H
+      
+NUM1 DB 5
+NUM2 DB 9
+
+      ORG 2000H
+
+      MOV AL, NUM1
+      MOV AH, 0
+      MOV BL, NUM2
+      MOV BH, 0
+      PUSH AX
+      PUSH BX
+      PUSH CX
+      CALL MUL
+      POP CX
+      POP BX
+      POP AX
+      HLT
+      END
+      
+
+      

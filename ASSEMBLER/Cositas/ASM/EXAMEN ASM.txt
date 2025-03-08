@@ -1,0 +1,138 @@
+          ORG 3000H
+ESVOCAL:  PUSH BX
+          MOV BX, SP
+          ADD BX, 6
+          PUSH AX
+          PUSH CX
+          PUSH DX
+
+          MOV CL, [BX]; LETRA
+          SUB BX, 2
+          MOV AX, BX ; DIRECCION DE RESULTADO
+          PUSH AX
+          MOV AX, OFFSET FINVOCALES
+          SUB AX, OFFSET VOCALES
+          MOV BX, OFFSET VOCALES
+          MOV DX, 0FFFFH
+BUCLEESVOCAL:
+          CMP [BX], CL
+          JZ FINBUCLEESVOCAL
+          INC BX
+          DEC AX
+          JNZ BUCLEESVOCAL
+          MOV DX, 0
+FINBUCLEESVOCAL:      
+          POP AX
+          MOV BX, AX
+          MOV [BX], DX
+          POP DX
+          POP CX
+          POP AX
+          POP BX
+          
+          RET
+
+ENCRYPT:
+          PUSH BX
+          MOV BX, SP
+          ADD BX, 6
+          PUSH AX
+          PUSH CX
+          PUSH DX
+
+          MOV AX, BX ; GUARDA DIRECCION ORIGINAL
+          MOV CX, [BX] ; GUARDA LA DIRECCION DE LA VOCAL
+          MOV BX, CX
+          MOV BL, [BX]; GUARDA LA LETRA
+          PUSH BX
+          PUSH BX
+          CALL ESVOCAL
+          POP DX
+          POP BX
+
+          CMP DX, 0
+          JZ FINENCRYPT
+          MOV BX, CX
+          MOV CL, [BX]
+          
+          CMP CL, 'A'
+          JNZ ENCRYPTE
+          MOV DL, '@'
+          MOV [BX], DL
+          MOV BX, AX
+          SUB BX, 2
+          MOV CX, 1
+          MOV [BX], CX
+          JMP FINENCRYPT
+          
+ENCRYPTE: CMP CL, 'E'
+          JNZ ENCRYPTI
+          MOV DL, '3'
+          MOV [BX], DL
+          MOV BX, AX
+          SUB BX, 2
+          MOV CX, 1
+          MOV [BX], CX
+          JMP FINENCRYPT
+ENCRYPTI: CMP CL, 'I'
+          JNZ ENCRYPTO
+          MOV DL, '!'
+          MOV [BX], DL
+          MOV BX, AX
+          SUB BX, 2
+          MOV CX, 1
+          MOV [BX], CX
+          JMP FINENCRYPT
+ENCRYPTO: CMP CL, 'O'
+          JNZ ENCRYPTU
+          MOV DL, '0'
+          MOV [BX], DL
+          MOV BX, AX
+          SUB BX, 2
+          MOV CX, 1
+          MOV [BX], CX
+          JMP FINENCRYPT
+ENCRYPTU: CMP CL, 'U'
+          MOV DL, 'u'
+          MOV [BX], DL
+          MOV BX, AX
+          SUB BX, 2
+          MOV CX, 1
+          MOV [BX], CX
+          
+          
+FINENCRYPT:
+          POP DX
+          POP CX
+          POP AX
+          POP BX
+          RET
+
+          ORG 1000H
+VOCALES   DB "AEIOU"; 1000H - 1004H
+FINVOCALES DB ? ; 1005H
+STRING     DB "**MI_cONTraSEñA.UnICa" ; 1006H - 101AH
+FINSTRING  DB ?; 101BH
+CARSUS    DW ? ; 101CH - 101DH
+
+          ORG 2000H
+          MOV BX, OFFSET STRING
+          MOV CX, OFFSET FINSTRING
+          SUB CX, BX
+          MOV DX, 0
+                    
+BUCLE:    MOV AX, 0
+          PUSH BX
+          PUSH AX
+          CALL ENCRYPT
+          POP AX
+          POP BX
+          ADD DX, AX
+          INC BX
+          DEC CX
+          JNZ BUCLE
+
+          MOV CARSUS, DX
+          
+          HLT
+          END

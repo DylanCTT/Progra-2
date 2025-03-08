@@ -1,0 +1,103 @@
+programa ejemplo
+procesos
+  proceso RecorroAvIzq(E av:numero; E ca:numero)
+  comenzar
+    BloquearEsquina(av,ca+1)
+    mover
+    LiberarEsquina(av,ca)
+  fin
+  proceso RecorroAvDer(E av:numero; E ca:numero)
+  comenzar
+    BloquearEsquina(av,ca-1)  
+    mover
+    LiberarEsquina(av,ca)  
+  fin
+  proceso RecorroCaArriba(E av:numero; E ca:numero)
+  comenzar
+    BloquearEsquina(av+1,ca)
+    mover
+    LiberarEsquina(av,ca)
+  fin
+  proceso RecorroCaAbajo(E av:numero; E ca:numero)
+  comenzar
+    BloquearEsquina(av-1,ca)
+    mover
+    LiberarEsquina(av,ca)
+  fin
+  proceso VerificoYRecorro (E lugar:numero;E av:numero; E ca:numero)
+  comenzar
+    si(lugar=1)
+      RecorroAvIzq(av,ca)
+    si (lugar=2)
+      RecorroCaArriba(av,ca)
+    si(lugar=3)
+      RecorroAvDer(av,ca)
+    si(lugar=4)
+      RecorroCaAbajo(av,ca)
+  fin
+areas
+  AF:AreaP(49,50,49,50)
+  AP:AreaP(50,49,50,49)
+  AvIzq: AreaC (1,1,1,100)
+  AvDer:AreaC(100,1,100,99)
+  CaArriba:AreaC(2,100,100,100)
+  CaAbajo:AreaC(2,1,99,1)
+robots
+  robot florero
+  variables
+    cont:numero
+    lugar:numero
+  comenzar
+    BloquearEsquina(1,1)
+    Pos(1,1)
+    cont:=0
+    lugar:=0
+    repetir 4
+      lugar:=lugar+1
+      repetir 99
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          cont:=cont+1
+        VerificoYRecorro(lugar,PosAv,PosCa)
+      derecha
+    Pos(49,50)
+    Informar(cont)
+  fin
+  robot papelero
+  variables
+    cont:numero
+    lugar:numero
+  comenzar
+    BloquearEsquina(1,1)
+    Pos(1,1)
+    cont:=0
+    lugar:=0
+    repetir 4
+      lugar:=lugar+1
+      repetir 99
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          cont:=cont+1
+        VerificoYRecorro(lugar,PosAv,PosCa)
+      derecha
+    Pos(50,49)
+    Informar(cont)
+    
+  fin
+variables
+  RFlorero:florero
+  RPapelero:papelero
+comenzar
+  AsignarArea(RFlorero, AF)
+  AsignarArea(RFlorero, AvIzq)
+  AsignarArea(RFlorero, AvDer)
+  AsignarArea(RFlorero,CaArriba)
+  AsignarArea(RFlorero, CaAbajo)
+  AsignarArea(RPapelero, AP)
+  AsignarArea(RPapelero, AvIzq)
+  AsignarArea(RPapelero, AvDer)
+  AsignarArea(RPapelero,CaArriba)
+  AsignarArea(RPapelero, CaAbajo)
+  Iniciar(RPapelero, 50,49)
+  Iniciar(RFlorero,49,50)
+fin

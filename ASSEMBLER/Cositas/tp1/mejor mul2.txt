@@ -1,0 +1,40 @@
+      ORG 3000H
+MUL:  POP BX
+      POP AX
+      POP CX
+      MOV DX, 0
+      CMP AX, CX
+      JNS BUNSP ; Si AX ES MAS GRANDE QUE CX SALTA
+      XOR AX, CX
+      XOR CX, AX
+      XOR AX, CX
+BUNSP:CMP CX, 0
+      JZ BUFN
+BUML: ADD DX, AX
+      DEC CX
+      JNZ BUML
+      PUSH AX
+      PUSH AX
+      PUSH BX
+BUFN: RET
+      
+      ORG 1000H
+
+      NUM1 DW 2
+      NUM2 DW 10
+      RES  DW ?
+
+      ORG 2000H
+
+      MOV AX, NUM1
+      PUSH AX
+      MOV AX, NUM2
+      PUSH AX
+      CALL MUL
+      POP AX
+      POP AX
+      
+  
+FIN:  MOV RES, DX
+      HLT
+      END

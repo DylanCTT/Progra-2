@@ -1,0 +1,301 @@
+-recorrer cuando tengo dos robots en la misma avenida
+  
+   Recorrer av a la vez
+      BloquearEsquina(miAv, miCa+1)
+      mover
+      LiberarEsquina(miAv,miCa)
+   Recorrer ca a la vez
+      BloquearEsquina(miAv+1, miCa)
+      mover
+      LiberarEsquina(miAv,miCa)
+
+si quiero recorrer para abajo en vez de sumar 1, resto 1
+
+
+-para recorrer el perímetro de la ciudad con dos robots a la vez
+
+proceso RecorroAvIzq(E av:numero; E ca:numero)
+  comenzar
+    BloquearEsquina(av,ca+1)
+    mover
+    LiberarEsquina(av,ca)
+  fin
+  proceso RecorroAvDer(E av:numero; E ca:numero)
+  comenzar
+    BloquearEsquina(av,ca-1)  
+    mover
+    LiberarEsquina(av,ca)  
+  fin
+  proceso RecorroCaArriba(E av:numero; E ca:numero)
+  comenzar
+    BloquearEsquina(av+1,ca)
+    mover
+    LiberarEsquina(av,ca)
+  fin
+  proceso RecorroCaAbajo(E av:numero; E ca:numero)
+  comenzar
+    BloquearEsquina(av-1,ca)
+    mover
+    LiberarEsquina(av,ca)
+  fin
+  proceso VerificoYRecorro (E lugar:numero;E av:numero; E ca:numero)
+  comenzar
+    si(lugar=1)
+      RecorroAvIzq(av,ca)
+    si (lugar=2)
+      RecorroCaArriba(av,ca)
+    si(lugar=3)
+      RecorroAvDer(av,ca)
+    si(lugar=4)
+      RecorroCaAbajo(av,ca)
+  fin
+
+  robot papelero
+  variables
+    cont:numero
+    lugar:numero
+  comenzar
+    BloquearEsquina(1,1)
+    Pos(1,1)
+    cont:=0
+    lugar:=0
+    repetir 4
+      lugar:=lugar+1
+      repetir 99
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          cont:=cont+1
+        VerificoYRecorro(lugar,PosAv,PosCa)
+      derecha
+    Pos(50,49)
+    Informar(cont)
+    
+
+//PROCESOS UTILES DE SIEMPRE 
+
+/////////////////////////////////////////////////////////
+
+// FLORES
+  proceso juntarFlores(ES tf:numero)
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      tf:= tf + 1
+  fin
+
+  proceso depositarFlores
+  comenzar
+    mientras HayFlorEnLaBolsa
+      depositarFlor
+  fin
+
+/////////////////////////////////////////////////////////
+
+// PAPELES
+  proceso juntarPapeles(ES tp:numero)
+  comenzar
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      tp:= tp + 1 
+  fin
+
+  proceso depositarPapeles
+  comenzar
+    mientras HayPapelEnLaBolsa
+      depositarPapel
+  fin
+
+///////////////////////////////////////////////////////
+
+
+// MOVIMIENTOS
+  proceso izquierda
+  comenzar
+    repetir 3
+      derecha
+  fin
+
+  proceso escalon (E alto: numero; E ancho: numero)
+  comenzar
+    repetir alto
+      mover
+    derecha
+    repetir ancho
+      ancho
+    izquierda
+  fin
+
+  proceso escalera (E escalones: numero)
+  comenzar
+    repetir escalones
+      escalon
+  fin
+
+  proceso rectangulo (E alto: numero; E ancho: numero)
+  comenzar
+    repetir 2
+      repetir alto
+        mover
+      derecha
+      repetir ancho
+        mover
+      derecha
+  fin
+
+
+// RECORRER SIN CHOCAR LOS ROBOTS
+
+// Calle juntando flores y papeles
+
+  proceso RecorrerCalle(E calle: numero; ES tf: numero; ES tp: numero)
+  variables
+    av: numero
+  comenzar
+    av:= 1
+    BloquearEsquina(av,calle)
+    Pos(av,calle)
+    derecha
+    juntarPapeles(tp)
+    juntarFlores(tf)
+    repetir 99
+      av:= av + 1
+      BloquearEsquina(av,calle)
+      mover
+      juntarPapeles(tp)
+      juntarFlores(tf)
+      LiberarEsquina(av - 1,calle)
+    LiberarEsquina(av,calle)
+    juntarPapeles(tp)
+    juntarFlores(tf)
+  fin
+
+// avenida flores
+
+  proceso recorrerAvenida(E av: numero; ES tf: numero)
+  variables
+    calle: numero
+  comenzar
+    calle:= 1
+    BloquearEsquina(av,calle)
+    Pos(av,calle)
+    juntarFlores(tf)
+    repetir 99
+      calle:= calle + 1
+      BloquearEsquina(av,calle)
+      mover
+      juntarFlores(tf)
+      LiberarEsquina(av,calle - 1)
+    LiberarEsquina(av,calle)
+    juntarPapeles(tp)
+  fin
+
+// calle papeles
+
+  proceso recorrerCalle(E calle: numero; ES tp: numero)
+  variables
+    av: numero
+  comenzar
+    av:= 1
+    BloquearEsquina(av,calle)
+    Pos(av,calle)
+    derecha
+    juntarPapeles(tp)
+    repetir 99
+      av:= av + 1
+      BloquearEsquina(av,calle)
+      mover
+      juntarPapeles(tp)
+      LiberarEsquina(av - 1,calle)
+    LiberarEsquina(av,calle)
+    juntarPapeles(tp)
+  fin
+
+////////////////////////////////////////////////////////
+
+// MAXIMO
+
+  proceso maximo(E id:numero; E elemento: numero; ES max:numero; ES ganador:numero)
+  comenzar
+    si (elemento > max)
+      max:= elemento
+      ganador:= id
+  fin
+
+////////////////////////////////////////////////////////////
+
+// ROBOTS 
+
+robot robotJefe
+comenzar
+  derecha
+fin
+
+robot robot1
+comenzar
+  derecha
+fin
+
+robot robot2
+comenzar
+  derecha
+fin
+
+robot robot3
+comenzar
+  derecha
+fin
+
+robot robot4
+comenzar
+  derecha
+fin
+
+{Para inicializarlos}
+R_Jefe: robotJefe
+R1: robot1
+R2: robot2
+R3: robot3
+R4: robot4
+
+///////////////////////////////////////////////////////////////
+
+// AREAS
+areas
+  AJ: AreaP (1,1,1,1)
+
+
+comenzar
+  AsignarArea(R_Jefe, )
+  AsignarArea(R1, )
+  AsignarArea(R2, )
+  AsignarArea(R3, )
+  AsignarArea(R4, )
+  
+  Iniciar(R_Jefe, 1,1)
+  Iniciar(R1, , )
+  Iniciar(R2, , )
+  Iniciar(R3, , )
+  Iniciar(R4, , )
+fin
+
+
+
+
+
+
+
+
+
+areas
+  AreaFiscal: AreaC (1,1,1,1)
+  IR1: AreaP (2,1,2,96)
+  IR2: AreaP (3,1,3,96)
+  FR1: AreaP (2,99,2,100)
+  FR2: AreaP (3,99,3,100)
+  IA1: AreaP (1,97,1,97)
+  IA2: AreaP (1,98,1,98)
+  FA1: AreaP (4,97,100,97)
+  FA2: AreaP (4,98,100,98)
+  Interseccion: AreaPC (2,97,3,98)
+    
+    

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="juegostpfinal.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="118"/>
+        <CursorPos X="57" Y="214"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="5">
+      <Position>
+        <Filename Value="juegostpfinal.lpr"/>
+        <Caret Line="173" Column="23" TopLine="156"/>
+      </Position>
+      <Position>
+        <Filename Value="juegostpfinal.lpr"/>
+        <Caret Line="154" Column="50" TopLine="156"/>
+      </Position>
+      <Position>
+        <Filename Value="juegostpfinal.lpr"/>
+        <Caret Line="118" Column="17" TopLine="123"/>
+      </Position>
+      <Position>
+        <Filename Value="juegostpfinal.lpr"/>
+        <Caret Line="128" Column="36" TopLine="113"/>
+      </Position>
+      <Position>
+        <Filename Value="juegostpfinal.lpr"/>
+        <Caret Line="4" Column="8"/>
+      </Position>
+      <Position>
+        <Filename Value="juegostpfinal.lpr"/>
+        <Caret Line="129" Column="17" TopLine="124"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

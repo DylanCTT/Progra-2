@@ -1,0 +1,32 @@
+            ORG 3000H
+CONTAR_MIN: MOV AX, 0
+            CMP BYTE PTR [BX], 00H
+            JZ CONTAR_MINC
+            CMP BYTE PTR [BX], 'a'
+            JS CONTAR_MINB
+            CMP BYTE PTR [BX], 'z' + 1
+            JNS CONTAR_MINB
+            INC AX
+
+            
+CONTAR_MINB:INC BX
+            CMP BYTE PTR [BX], 00H
+            JZ CONTAR_MINC
+            CMP BYTE PTR [BX], 'a'
+            JS CONTAR_MINB
+            CMP BYTE PTR [BX], 'z' + 1
+            JNS CONTAR_MINB
+            INC AX
+            JMP CONTAR_MINB
+CONTAR_MINC:RET
+            
+
+            ORG 1000H
+            PALABRA DB "aaaaaTzzzzz", 00H
+            
+            ORG 2000H
+            MOV BX, OFFSET PALABRA
+            CALL CONTAR_MIN
+                        
+FIN:        HLT
+            END

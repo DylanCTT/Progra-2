@@ -1,0 +1,55 @@
+programa ejemplo
+procesos
+
+  proceso recorrerAvenida(ES cantF:numero)
+  comenzar
+    repetir 99
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cantF:=cantF+1
+  fin
+  
+areas
+  admin: AreaP (1,1,1,1)
+  com2:AreaP(1,2,1,2)
+  com3:AreaP(1,3,1,3)
+  com4:AreaP(1,4,1,4)
+  com4:AreaP(1,5,1,5)
+  ciudad1:AreaP(97,1,97,100)
+  ciudad2:AreaP(98,1,98,100)
+  ciudad3:AreaP(99,1,99,100)
+  ciudad4:AreaP(100,1,100,100)
+  carrera1:AreaP(50,1,50,100)
+  carrera2:AreaP(60,1,60,100)
+robots
+  robot robotEjecutor
+  variables
+    contF:numero
+  comenzar
+    cantF:=0
+    RecibirMensaje(av,robotAdmin)
+    Pos(av,1)
+    recorrerAvenida(cantF)
+  fin
+  
+  robot robotAdmin
+  variables
+  comenzar
+    repetir 4
+      Random(nroRobot,1,4)
+      enviarAvenida(nroRobot,av)    
+  fin
+variables
+  R1:robotEjecutor
+  R2:robotEjecutor
+  R3:robotEjecutor
+  R4:robotEjecutor
+  R_admin:robotAdmin
+comenzar
+  AsignarArea(R1, ciudad1)
+  AsignarArea(R2,ciudad2)
+  AsignarArea(R1,Deposito)
+  AsignarArea(R2,Deposito)
+  Iniciar(R1, 15,15)
+  Iniciar(R2,40,40)
+fin

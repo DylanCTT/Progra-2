@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="vectorordenado.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="58"/>
+        <CursorPos X="37" Y="69"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="6">
+      <Position>
+        <Filename Value="vectorordenado.lpr"/>
+        <Caret Line="69" Column="27" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="vectorordenado.lpr"/>
+        <Caret Line="68" Column="42" TopLine="58"/>
+      </Position>
+      <Position>
+        <Filename Value="vectorordenado.lpr"/>
+        <Caret Line="60" Column="19" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="vectorordenado.lpr"/>
+        <Caret Line="61" Column="11" TopLine="54"/>
+      </Position>
+      <Position>
+        <Filename Value="vectorordenado.lpr"/>
+        <Caret Line="83" Column="13" TopLine="71"/>
+      </Position>
+      <Position>
+        <Filename Value="vectorordenado.lpr"/>
+        <Caret Line="80" Column="20" TopLine="70"/>
+      </Position>
+      <Position>
+        <Filename Value="vectorordenado.lpr"/>
+        <Caret Line="69" Column="51" TopLine="53"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

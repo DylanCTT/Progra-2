@@ -1,0 +1,38 @@
+TIMER EQU 10H
+PIC   EQU 20H
+
+      ORG 4H
+      DW GESTORTIMER
+      ORG 3000H
+GESTORTIMER:
+      PUSH AX
+      MOV FINALIZAR, 0
+      MOV AL, 20H
+      OUT PIC, AL
+      POP AX
+      IRET
+      
+
+
+      ORG 1000H
+PALABRA DB "VAMOS LAS INTERRUPCIONES!", 10
+FINPALABRA DB ?
+FINALIZAR DB 1
+      ORG 2000H
+      MOV AL, 11111101B
+      OUT PIC + 1, AL
+      MOV AL, 1
+      OUT PIC + 5, AL
+      MOV BX, OFFSET PALABRA
+      MOV AL, 10
+      OUT TIMER + 1, AL
+      MOV AL, 0
+      OUT TIMER, AL
+      MOV AL, OFFSET FINPALABRA - OFFSET PALABRA
+      
+BUCLE:
+      CMP FINALIZAR, 0
+      JNZ BUCLE
+      INT 7
+      HLT
+      END

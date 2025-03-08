@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="borrarelemento.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="236"/>
+        <CursorPos X="2" Y="254"/>
+        <FoldState Value=" T3jY075 Pj2iO0A"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="9">
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="221" Column="18" TopLine="194"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="203" Column="21" TopLine="191"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="191" Column="13" TopLine="147"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="210" Column="14" TopLine="198"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="216" Column="18" TopLine="204"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="221" Column="49" TopLine="208"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="210" Column="42" TopLine="211"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="201" Column="12" TopLine="161"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="225" TopLine="213"/>
+      </Position>
+      <Position>
+        <Filename Value="borrarelemento.lpr"/>
+        <Caret Line="223" TopLine="202"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

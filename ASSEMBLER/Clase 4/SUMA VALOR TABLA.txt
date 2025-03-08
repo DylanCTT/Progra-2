@@ -1,0 +1,55 @@
+        ORG 3000H
+SUBRUTINA:
+        PUSH BX
+        MOV BX, SP
+        ADD BX, 4
+        PUSH AX
+        PUSH CX
+        PUSH DX
+
+        MOV DX, [BX] ; VALOR de la tabla para sumar
+        ADD BX, 2 ;muevo el SP
+        MOV CX, [BX] ; guardo DIMF 
+        ADD BX, 2
+        MOV BX, [BX] ; PUNTERO TABLA
+
+        CMP CX, 0
+        JZ FINSUBRUTINA
+BUCLESUBRUTINA:
+        ADD [BX], DL; sumo al valor de la tabla mi valor 3
+        INC BX ; me muevo en la tabla
+        DEC CX ;si no llegue al final me sigo moviendo
+        JNZ BUCLESUBRUTINA
+FINSUBRUTINA:
+
+        POP DX
+        POP CX
+        POP AX
+        POP BX
+        RET
+        
+
+        ORG 1000H
+TABLA 	 DB 1,4,5,3,10,7,14,78,23,18
+FINTABLA DB ?
+VALOR    DB 3
+
+        ORG 2000H
+
+        MOV AL, VALOR ;valor por pila
+        MOV BX, OFFSET TABLA ;referencia por pila
+        MOV CX, OFFSET TABLA ; referencia por pila
+        NEG CX
+        ADD CX, OFFSET FINTABLA
+
+        PUSH BX ; PUNTERO TABLA
+        PUSH CX ; DIMF
+        PUSH AX ; VALOR
+        CALL SUBRUTINA
+        POP AX
+        POP CX
+        POP BX
+        
+FIN:    HLT
+        END
+        

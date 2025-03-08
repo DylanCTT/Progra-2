@@ -1,0 +1,19 @@
+            ORG 3000H
+LONGITUD:   MOV AX, 0
+            CMP BYTE PTR [BX], 00H
+            JZ LONGITUDB
+LONGITUDA:  INC BX
+            INC AX
+            CMP BYTE PTR [BX], 00H
+            JNZ LONGITUDA
+LONGITUDB:  RET
+
+            ORG 1000H
+            PALABRA DB "Hola", 00H
+            
+            ORG 2000H
+            MOV BX, OFFSET PALABRA
+            CALL LONGITUD
+            
+FIN:        HLT
+            END

@@ -1,0 +1,228 @@
+programa Grupo21
+procesos
+  proceso Identificar
+  comenzar
+    EnviarMensaje(1,A1)
+    EnviarMensaje(2,A2)
+    EnviarMensaje(3,B1)
+    EnviarMensaje(4,B2)
+  fin
+  proceso Recorrido(ES cantF:numero)
+  comenzar
+    repetir 2
+      repetir 9
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          cantF:=cantF+1
+        mover
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cantF:=cantF+1
+      derecha
+  fin
+  proceso dejarEsq20
+  variables
+    avO,caO:numero
+  comenzar
+    avO:=PosAv
+    caO:=PosCa
+    mientras HayFlorEnLaBolsa
+      BloquearEsquina(20,20)
+      Pos(20,20)
+      depositarFlor
+      Pos(avO,caO)
+      LiberarEsquina(20,20)
+  fin
+  
+  proceso mirarAbajo
+  comenzar
+    repetir 2
+      derecha
+  fin
+areas
+  avA1:AreaP (1,1,1,10)
+  caA1:AreaP(2,10,10,10)
+  avA2:AreaP(11,1,11,10)
+  caA2:AreaP(2,1,10,1)
+  avB1:AreaP (20,1,20,10)
+  caB1:AreaP(21,10,29,10)
+  avB2:AreaP(30,1,30,10)
+  caB2:AreaP(21,1,29,1)
+  ca50:AreaPC(1,50,100,50) 
+  af:AreaP(1,100,1,100)
+  esq100:AreaPC(100,100,100,100)
+  esq20:AreaPC(20,20,20,20)
+  
+ 
+robots
+  robot corredorImpar
+  variables
+    cantF:numero
+    id:numero
+    termine:numero
+    avO:numero
+    caO:numero
+    clasificado:numero 
+  comenzar
+    RecibirMensaje(id,fiscal)
+    cantF:=0    
+    Recorrido(cantF)
+    termine:=1
+    si (id=1)
+      EnviarMensaje(termine,A2)
+    sino
+      EnviarMensaje(termine,B2)
+    EnviarMensaje(id,fiscal)
+    EnviarMensaje(cantF,fiscal)
+    dejarEsq20
+    RecibirMensaje(clasificado,fiscal)
+    si (clasificado=1)
+      BloquearEsquina(1,50)
+      Pos(1,50)
+      avO:=1
+      caO:=50 
+      repetir 49
+        BloquearEsquina(100,100)
+        Pos(100,100)
+        tomarPapel
+        Pos(avO,caO)
+        LiberarEsquina(100,100)
+        depositarPapel
+        BloquearEsquina(avO+2,caO)
+        Pos(avO+2,caO)
+        LiberarEsquina(avO,caO)
+        avO:=PosAv 
+      BloquearEsquina(100,100)
+      Pos(100,100)
+      tomarPapel
+      Pos(avO,caO)
+      LiberarEsquina(100,100)
+      depositarPapel
+      EnviarMensaje(id,fiscal)
+      EnviarMensaje(id,fiscal)
+                  
+  fin
+  robot corredorPar
+  variables
+    cantF:numero
+    id:numero
+    termine:numero
+    avO:numero
+    caO:numero
+    clasificado:numero  
+  comenzar
+    RecibirMensaje(id,fiscal)
+    si(id=2)
+      RecibirMensaje(termine,A1)
+    sino
+      RecibirMensaje(termine,B1)
+    mirarAbajo
+    cantF:=0    
+    Recorrido(cantF)
+    EnviarMensaje(id,fiscal)
+    EnviarMensaje(cantF,fiscal)
+    dejarEsq20
+    RecibirMensaje(clasificado,fiscal)
+    si (clasificado=1)
+      BloquearEsquina(2,50)
+      Pos(2,50)
+      avO:=2
+      caO:=50 
+      repetir 49
+        BloquearEsquina(100,100)
+        Pos(100,100)
+        tomarPapel
+        Pos(avO,caO)
+        LiberarEsquina(100,100)
+        depositarPapel
+        BloquearEsquina(avO+2,caO)
+        Pos(avO+2,caO)
+        LiberarEsquina(avO,caO)
+        avO:=PosAv
+      BloquearEsquina(100,100)
+      Pos(100,100)
+      tomarPapel
+      Pos(avO,caO)
+      LiberarEsquina(100,100)
+      depositarPapel
+      EnviarMensaje(id,fiscal)  
+  fin
+  robot fiscalizador
+  variables
+    cantA,cantB:numero
+    id:numero
+    cantF:numero
+    ganador:numero
+  comenzar
+    Identificar
+    cantA:=0
+    cantB:=0
+    repetir 4
+      RecibirMensaje(id,*)
+      si (id=1)
+        RecibirMensaje(cantF,A1)
+        cantA:=cantA+cantF
+      sino
+        si (id=2)
+          RecibirMensaje(cantF,A2)
+          cantA:=cantA+cantF
+        sino
+          si (id=3)
+            RecibirMensaje(cantF,B1)
+            cantB:=cantB+cantF
+          sino
+            si (id=4)
+              RecibirMensaje(cantF,B2)
+              cantB:=cantB+cantF
+    si cantB<=cantA
+      Informar(cantA)
+      EnviarMensaje(1,A1)
+      EnviarMensaje(1,A2)
+      EnviarMensaje(0,B1)
+      EnviarMensaje(0,B2)
+    sino
+      Informar(cantB)
+      EnviarMensaje(0,A1)
+      EnviarMensaje(0,A2)
+      EnviarMensaje(1,B1)
+      EnviarMensaje(1,B2)
+    RecibirMensaje(ganador,*)
+    Informar(ganador)
+    
+          
+  fin
+variables
+  A1:corredorImpar
+  A2:corredorPar
+  B1:corredorImpar
+  B2:corredorPar
+  fiscal:fiscalizador
+comenzar
+  AsignarArea(fiscal,af)
+  AsignarArea(fiscal,esq20)
+  AsignarArea(A1,avA1)
+  AsignarArea(A1,caA1)
+  AsignarArea(A1,esq100)
+  AsignarArea(A1,esq20)
+  AsignarArea(A1,ca50)
+  AsignarArea(A2,avA2)
+  AsignarArea(A2,caA2)
+  AsignarArea(A2,esq100)
+  AsignarArea(A2,esq20)
+  AsignarArea(A2,ca50)
+  AsignarArea(B1,avB1)
+  AsignarArea(B1,caB1)
+  AsignarArea(B1,esq100)
+  AsignarArea(B1,esq20)
+  AsignarArea(B1,ca50)
+  AsignarArea(B2,avB2)
+  AsignarArea(B2,caB2)
+  AsignarArea(B2,esq100)
+  AsignarArea(B2,esq20) 
+  AsignarArea(B2,ca50) 
+  Iniciar(fiscal, 1,100)
+  Iniciar(A1,1,1)
+  Iniciar(A2,11,10)
+  Iniciar(B1,20,1)
+  Iniciar(B2,30,10)
+fin

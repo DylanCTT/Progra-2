@@ -1,0 +1,85 @@
+        ORG 3000H
+
+ROTARIZQ:
+        PUSH BX
+        MOV BX, SP
+        ADD BX, 8
+        PUSH CX
+        PUSH DX
+
+        MOV DX, [BX] ; VAR1
+        SUB BX, 2
+        MOV CX, [BX]; CORRIMIENTO
+        SUB BX, 2
+        CMP CX,0
+        JZ FINROTARIZQ
+BUCLEROTARIZQ:
+        ADD DX, DX
+        ADC DX, 0
+        DEC CX
+        JNZ BUCLEROTARIZQ
+        
+
+FINROTARIZQ: 
+        MOV [BX], DX
+        POP DX
+        POP CX
+        POP BX
+        RET
+
+ROTARDER:
+        PUSH BX
+        MOV BX, SP
+        ADD BX, 10
+        PUSH CX
+        PUSH DX
+
+        MOV DX, [BX] ; VAR1
+        SUB BX, 2
+        MOV CX, [BX] ; CORRIMIENTO
+        SUB BX, 2
+        CMP CX,0
+        NEG CX
+        ADD CX, 16
+
+        PUSH DX ; VAR1
+        PUSH CX ; CORRIMIENTO
+        PUSH DX ; RESULTADO
+        CALL ROTARIZQ
+        POP DX ; RESULTADO
+        POP CX ; CORRIMIENTO
+        POP AX ; VAR1
+        
+
+FINROTARDER:
+        MOV [BX], DX ; RESULTADO
+        SUB BX, 2
+        MOV [BX], CX ; CORRIMIENTO
+        SUB BX,2
+        POP DX
+        POP CX
+        POP BX
+        RET
+        
+
+        ORG 1000H
+VAR1    DW  1000000000010100B
+VAR2    DW  1
+
+        ORG 2000H
+        MOV AX, VAR1
+        MOV CX, VAR2
+
+        PUSH AX ; VAR 1
+        PUSH CX ; VAR 2
+        PUSH DX ; RESULTADO
+        PUSH BX ; RESULTADO CORRIMIENTO
+        CALL ROTARDER
+        POP BX ; RESULTADO CORRIMIENTO
+        POP DX ; RESULTADO
+        POP CX ; VAR 2
+        POP AX ; VAR 1
+        
+FIN:    HLT
+        END
+        

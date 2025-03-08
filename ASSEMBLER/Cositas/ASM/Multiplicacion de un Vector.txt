@@ -1,0 +1,21 @@
+        ORG 1000h
+VECTOR  DB 1,2,3,4,5,6,7,8,9,10
+DIML    DW OFFSET VECTOR + 4
+
+        ORG 2000h
+        MOV AX, 1
+        MOV BX, OFFSET VECTOR
+
+BUCLE:  CMP BX, DIML
+        JZ FIN
+        MOV DX, AX
+        MOV CX, 0
+MUL:    ADD CL, [BX]
+        DEC DX
+        JNZ MUL
+        MOV AX, CX
+        INC BX
+        JMP BUCLE
+
+FIN:    hlt
+        end

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="arreglos.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="50"/>
+        <CursorPos X="8" Y="62"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="3">
+      <Position>
+        <Filename Value="arreglos.lpr"/>
+        <Caret Line="53" Column="11" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="arreglos.lpr"/>
+        <Caret Line="66" Column="21" TopLine="51"/>
+      </Position>
+      <Position>
+        <Filename Value="arreglos.lpr"/>
+        <Caret Line="74" Column="16" TopLine="61"/>
+      </Position>
+      <Position>
+        <Filename Value="arreglos.lpr"/>
+        <Caret Line="82" Column="62" TopLine="62"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

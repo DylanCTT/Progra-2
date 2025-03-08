@@ -1,0 +1,49 @@
+        ORG 3000H
+
+ROTARIZQ:
+        PUSH BX
+        MOV BX, SP
+        ADD BX, 8
+        PUSH CX
+        PUSH DX
+
+        MOV DX, [BX] ; VAR1
+        SUB BX, 2
+        MOV CX, [BX]; CORRIMIENTO
+        SUB BX, 2
+        CMP CX,0
+        JZ FINROTARIZQ
+BUCLEROTARIZQ:
+        ADD DX, DX
+        ADC DX, 0
+        DEC CX
+        JNZ BUCLEROTARIZQ
+        
+
+FINROTARIZQ: 
+        MOV [BX], DX
+        POP DX
+        POP CX
+        POP BX
+        RET
+        
+
+        ORG 1000H
+VAR1    DW  1000000000010101B
+VAR2    DW  1
+
+        ORG 2000H
+        MOV AX, VAR1
+        MOV CX, VAR2
+
+        PUSH AX
+        PUSH CX
+        PUSH DX
+        CALL ROTARIZQ
+        POP DX
+        POP CX
+        POP AX
+        
+FIN:    HLT
+        END
+        

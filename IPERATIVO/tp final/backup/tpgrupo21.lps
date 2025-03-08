@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="tpgrupo21.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="60"/>
+        <CursorPos X="17" Y="62"/>
+        <FoldState Value=" T3iW074 pj0jH0h4 POiR0L"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="28">
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="309" Column="12" TopLine="298"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="252" Column="45" TopLine="227"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="254" Column="13" TopLine="235"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="257" Column="14" TopLine="244"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="345" Column="23" TopLine="325"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="322" Column="64" TopLine="317"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="315" Column="38" TopLine="311"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="332" Column="43" TopLine="320"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="349" Column="47" TopLine="336"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="360" Column="7" TopLine="349"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="359" Column="5" TopLine="339"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="360" Column="44" TopLine="349"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="499" Column="21" TopLine="480"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="470" Column="24" TopLine="452"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="368" Column="15" TopLine="357"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="375" Column="4" TopLine="363"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="374" Column="46" TopLine="363"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="379" Column="36" TopLine="364"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="448" Column="40" TopLine="440"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="392" Column="28" TopLine="377"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="449" Column="45" TopLine="437"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="402" Column="23" TopLine="390"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="410" Column="17" TopLine="398"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="447" Column="36" TopLine="429"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="465" Column="76" TopLine="452"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="474" Column="27" TopLine="463"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="485" Column="5" TopLine="473"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="353" Column="106" TopLine="340"/>
+      </Position>
+      <Position>
+        <Filename Value="tpgrupo21.lpr"/>
+        <Caret Line="321" Column="33" TopLine="313"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

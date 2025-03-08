@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="16"/>
+        <CursorPos X="2" Y="25"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="24">
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="53" Column="7" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="10" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="32" Column="3" TopLine="19"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="35" Column="36" TopLine="26"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="49" TopLine="29"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="85" Column="23" TopLine="65"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="76" TopLine="72"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="59" Column="8" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="61" Column="3" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="130" Column="29" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="23" Column="8" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="66" Column="22" TopLine="54"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="81" Column="5" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="95" Column="45" TopLine="80"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="107" Column="5" TopLine="95"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="124" Column="42" TopLine="107"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="117" Column="5" TopLine="105"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="116" Column="5" TopLine="105"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="117" Column="30" TopLine="114"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="119" Column="8" TopLine="114"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="136" Column="10" TopLine="115"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="128" Column="19" TopLine="114"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="129" Column="19" TopLine="115"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="130" Column="76" TopLine="115"/>
+      </Position>
+      <Position>
+        <Filename Value="actividadcolaborativa.lpr"/>
+        <Caret Line="131" Column="3" TopLine="115"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

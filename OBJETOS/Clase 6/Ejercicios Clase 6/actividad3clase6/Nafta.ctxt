@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Nafta
+comment1.params=nroSurtidor\ impTot\ dni\ nombre\ apellido\ lts
+comment1.target=Nafta(int,\ double,\ int,\ java.lang.String,\ java.lang.String,\ double)
+comment2.params=
+comment2.target=double\ getLts()
+comment3.params=lts
+comment3.target=void\ setLts(double)
+comment4.params=
+comment4.target=double\ calcularImpuestoAPagar()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6

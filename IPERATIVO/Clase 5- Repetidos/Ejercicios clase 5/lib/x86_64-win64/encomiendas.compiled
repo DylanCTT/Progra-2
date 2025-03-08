@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\lazarus\fpc\3.2.2\bin\x86_64-win64\fpc.exe" Date="1488546183"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -gw2 -godwarfsets -gl -l -vewnhibq &quot;-FiC:\Users\clatd\OneDrive\Escritorio\progra 2\clases progra 2\Clase 5- Repetidos\Ejercicios clase 5\lib\x86_64-win64&quot; &quot;-FuC:\Users\clatd\OneDrive\Escritorio\progra 2\clases progra 2\Clase 5- Repetidos\Ejercicios clase 5\&quot; &quot;-FUC:\Users\clatd\OneDrive\Escritorio\progra 2\clases progra 2\Clase 5- Repetidos\Ejercicios clase 5\lib\x86_64-win64\&quot; &quot;-FEC:\Users\clatd\OneDrive\Escritorio\progra 2\clases progra 2\Clase 5- Repetidos\Ejercicios clase 5\&quot; &quot;-oC:\Users\clatd\OneDrive\Escritorio\progra 2\clases progra 2\Clase 5- Repetidos\Ejercicios clase 5\encomiendas.exe&quot; encomiendas.lpr"/>
+</CONFIG>

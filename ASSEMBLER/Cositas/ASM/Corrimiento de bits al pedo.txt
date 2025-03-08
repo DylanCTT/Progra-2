@@ -1,0 +1,133 @@
+        ORG 3000H
+POT:    PUSH BX
+        MOV BX, SP
+        ADD BX, 8
+        PUSH AX
+        PUSH CX
+        PUSH DX
+
+        MOV DX, [BX] ;BASE
+        SUB BX, 2
+        MOV CX, [BX] ; POTENCIA
+        SUB BX, 2
+
+        MOV AX, 1
+
+        CMP CX, 0
+        JZ FINPOT
+
+BUCLEPOT:
+        PUSH DX
+        PUSH AX
+        PUSH DX
+        CALL MUL
+        POP AX
+        POP DX
+        POP DX
+        DEC CX
+        JNZ BUCLEPOT
+        
+        
+FINPOT: MOV [BX], AX
+        POP DX
+        POP CX
+        POP AX
+        POP BX
+        RET
+
+
+MUL:    PUSH BX ; DX TIENE QUE SER EL MENOR EN LO POSIBLE
+                ; MANDAR COMO PRIMERA VARIABLE, ABAJO DE TODO
+        MOV BX, SP
+        ADD BX, 8
+        PUSH AX
+        PUSH CX
+        PUSH DX
+
+        MOV DX, [BX] ; VAR1
+        SUB BX, 2
+        MOV CX, [BX] ; VAR2
+        SUB BX, 2
+                
+        MOV AX,0
+        CMP DX, CX
+        JS INVMUL
+        JC INVMUL
+        XOR DX, CX
+        XOR CX, DX
+        XOR DX, CX
+INVMUL: CMP DX, 0
+        JZ FINMUL
+BUCLEMUL:  
+        ADD AX, CX
+        ADC AX, 0
+        DEC DX
+        JNZ BUCLEMUL
+        
+FINMUL: MOV [BX], AX
+        POP DX
+        POP CX
+        POP AX
+        POP BX
+        RET
+
+ROTARIZQ:
+        PUSH BX
+        MOV BX, SP
+        ADD BX, 8
+        PUSH AX
+        PUSH CX
+        PUSH DX
+
+        MOV DX, [BX] ; VAR1
+        SUB BX, 2
+        MOV CX, [BX]; CORRIMIENTO
+        SUB BX, 2
+
+        MOV AX, 2
+
+        PUSH AX; BASE 2
+        PUSH CX; POTENCIA, CORRIMIENTO
+        PUSH AX; RESULTADO
+        CALL POT
+        POP CX; RESULTADO, CORRIMIENTO
+        POP AX; POTENCIA // LIMPIAR PILA
+        POP AX; BASE 2 // LIMPIAR PILA
+
+        PUSH CX 
+        PUSH DX
+        PUSH AX
+        CALL MUL
+        POP AX
+        POP DX
+        POP CX   
+        
+
+FINROTARIZQ: 
+        MOV [BX], AX
+        POP DX
+        POP CX
+        POP AX
+        POP BX
+        RET
+        
+
+        ORG 1000H
+VAR1    DW  1000000000010101B
+VAR2    DW  1
+
+        ORG 2000H
+        MOV AX, VAR1
+        MOV CX, VAR2
+
+        PUSH AX
+        PUSH CX
+        PUSH DX
+        CALL ROTARIZQ
+        POP DX
+        POP CX
+        POP AX
+        
+FIN:    HLT
+        END
+        

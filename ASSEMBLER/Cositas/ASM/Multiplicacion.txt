@@ -1,0 +1,26 @@
+        ORG 3000H
+MUL:    MOV AX,0
+        CMP DX, CX
+        JS INVMUL
+        XOR DX, CX
+        XOR CX, DX
+        XOR DX, CX
+INVMUL: CMP DX, 0
+        JZ FINMUL
+BUCLE:  ADD AX, CX
+        DEC DX
+        JNZ BUCLE
+FINMUL: RET
+
+        ORG 2000H
+        MOV CX, 50
+        MOV DX, 1000
+        PUSH CX
+        PUSH DX
+        CALL MUL
+        POP DX
+        POP CX
+        
+FIN:    HLT
+        END
+        
