@@ -89,9 +89,13 @@ begin
     insertarListaCod(a^.datos.cod,e.codigo);
   end
   else begin
-    if (a^.datos.peso>e.peso) then insertarArbol(a^.HI,e)
-    else if (a^.datos.peso<e.peso) then insertarArbol(a^.HD,e)
-    else insertarListaCod(a^.datos.cod,e.codigo);
+    if (a^.datos.peso>e.peso) then
+       insertarArbol(a^.HI,e) {si el peso es mas chico}
+    else
+      if (a^.datos.peso<e.peso) then
+         insertarArbol(a^.HD,e) {si el peso es mas grande}
+    else
+      insertarListaCod(a^.datos.cod,e.codigo); {trato los repetidos agregando el codigo de producto en una lista}
   end;
 end;
 
@@ -103,6 +107,7 @@ begin
   end;
 end;
 
+{IMPRIME UN ARBOL ORDENADO POR UN DATO PERO CON UNA LISTA DENTRO}
 procedure imprimirArbol(a:arbol);
 
   procedure mostrarInfo(datos:datosA);

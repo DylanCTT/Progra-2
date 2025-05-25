@@ -12,23 +12,22 @@ Type
     dato: encomienda;
     sig: lista;
   end;
-  arbolCOD=^nodoCOD;
-  nodoCOD=record
-    datoC:integer;
-    HIcod:arbolCOD;
-    HDcod:arbolCOD;
+
+  listaCod=^nodoCod;
+  nodoCod=record
+    cod:integer;
+    sig:listaCod;
   end;
 
-  elmArbol=record
+  datosA=record
     peso:integer;
-    AC:arbolCOD;
+    cod:listaCod;
   end;
 
-  arbolPESO=^nodoP;
-  nodoP=record
-    datoP:elmArbol;
-    HIpeso:arbolPESO;
-    HDpeso:arbolPESO;
+  arbol=^nodoA;
+  nodoA=record
+    datos:datosA;
+    HI,HD:arbol;
   end;
 
 {-----------------------------------------------------------------------------
@@ -42,7 +41,6 @@ begin
   aux^.sig := l;
   l:= aux;
 end;
-
 
 {-----------------------------------------------------------------------------
 CREARLISTA - Genera una lista con datos de las encomiendas }
@@ -59,63 +57,99 @@ begin
    agregarAdelante(L, e);
  End;
 end;
+
 {-----------------------------------------------------------------------------
 IMPRIMIRLISTA - Muestra en pantalla la lista l }
 procedure imprimirLista(l: Lista);
-
 begin
  While (l <> nil) do begin
    writeln('Codigo: ', l^.dato.codigo, '  Peso: ', l^.dato.peso);
    l:= l^.sig;
  End;
 end;
-{procedure InsertarABO (var A:arbolPESO;dato:integer);
-begin
-  if (A=nil) then begin
-    new(A);
-    A^.dato:=dato;
-    A^.HI:=nil;
-    A^.HD:=nil;
-  end
-  else
-    if (A^.dato>dato)then
-      InsertarABO(A^.HI,dato)
-    else
-      if (A^.dato<dato) then
-        InsertarABO(A^.HD,dato)
-      else
-        InsertarABO(A^.dato.AC,A^.dato.AC.dato);
-  end;
 
-procedure CargarArbol(var A:arbol);
+procedure insertarListaCod(var l:listaCod; cod:integer);
 var
-  dato:venta;
+  nue:listaCod;
 begin
-  writeln('ingrese el codigo de pasta: ');
-  readln(dato.codigo);
-  if (dato.codigo<>FIN) then begin
-    writeln('ingrese la cantidad de kilos vendida: ');
-    readln(dato.kilos);
-    InsertarABO(A,dato);
-    CargarArbol(A);
+  new(nue);
+  nue^.cod:=cod;
+  nue^.sig:=l;
+  l:=nue;
+end;
+
+procedure insertarArbol(var a:arbol; e:encomienda);
+begin
+  if (a=nil) then begin
+    new(a);
+    a^.datos.peso:=e.peso;
+    a^.datos.cod:=nil;
+    a^.HI:=nil;
+    a^.HD:=nil;
+    insertarListaCod(a^.datos.cod,e.codigo);
+  end
+  else begin
+    if (a^.datos.peso>e.peso) then
+       insertarArbol(a^.HI,e) {si el peso es mas chico}
+    else
+      if (a^.datos.peso<e.peso) then
+         insertarArbol(a^.HD,e) {si el peso es mas grande}
+    else
+      insertarListaCod(a^.datos.cod,e.codigo); {trato los repetidos agregando el codigo de producto en una lista}
+  end;
+end;
+
+procedure cargarArbol(var a:arbol; l:lista);
+begin
+  if (l<>nil) then begin
+    insertarArbol(a,l^.dato);
+    cargarArbol(a,l^.sig);
+  end;
+end;
+
+procedure imprimirArbol(a:arbol);
+
+  procedure mostrarInfo(datos:datosA);
+
+    procedure imprimirListaCodigos(l:listaCod);
+    begin
+      if (l<>nil) then begin
+        write(l^.cod,' ');
+        imprimirListaCodigos(l^.sig);
+      end;
+    end;
+
+  begin
+    writeln('Peso: ',datos.peso);
+    write('Codigo(s): ');
+    imprimirListaCodigos(a^.datos.cod);
   end;
 
-end;}
-
-
-
+begin
+  if (a<>nil) then begin
+    imprimirArbol(a^.HI);
+    mostrarInfo(a^.datos);
+    writeln(' ');
+    imprimirArbol(a^.HD);
+  end;
+end;
 
 Var
-
- l: lista;
+  l:lista;
+  a:arbol;
 
 begin
- Randomize;
+  Randomize;
+  crearLista(l);
+  writeln ('Lista de encomiendas generada: ');
+  imprimirLista(l);
 
- crearLista(l);
- writeln ('Lista de encomiendas generada: ');
- imprimirLista(l);
+  writeln(' ');
 
+  a:=nil;
+  cargarArbol(a,l);
+  writeln('Arbol generado: ');
+  imprimirArbol(a);
 
- readln;
+  readln;
 end.

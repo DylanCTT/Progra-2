@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\lazarus\fpc\3.2.2\bin\x86_64-win64\fpc.exe" Date="1488546183"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -gw2 -godwarfsets -gl -l -vewnhibq &quot;-FiC:\Users\clatd\Desktop\Informatica\Progra-2\IPERATIVO\Clase 5- Repetidos\lib\x86_64-win64&quot; &quot;-FuC:\Users\clatd\Desktop\Informatica\Progra-2\IPERATIVO\Clase 5- Repetidos\&quot; &quot;-FUC:\Users\clatd\Desktop\Informatica\Progra-2\IPERATIVO\Clase 5- Repetidos\lib\x86_64-win64\&quot; &quot;-FEC:\Users\clatd\Desktop\Informatica\Progra-2\IPERATIVO\Clase 5- Repetidos\&quot; &quot;-oC:\Users\clatd\Desktop\Informatica\Progra-2\IPERATIVO\Clase 5- Repetidos\act9diapo.exe&quot; act9diapo.lpr"/>
+</CONFIG>

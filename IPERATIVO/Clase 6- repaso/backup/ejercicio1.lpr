@@ -205,19 +205,19 @@ begin
   end;
 end;
 
-procedure recorrerycargar (var A:arbol;l:listaPartidos);
-var
- aux:lista;
-begin
-while (l<>nil) do begin
-  aux:=l^.dato.jugadores;
-  while (aux<>nil) do begin
-    InsertarABO(A,l^.dato,aux^.dato);
-    aux:=aux^.sig;
-    end;
-  l:=l^.sig;
-end;
-end;
+  procedure recorrerycargar (var A:arbol;l:listaPartidos);
+  var
+   aux:lista;
+  begin
+  while (l<>nil) do begin
+    aux:=l^.dato.jugadores;
+    while (aux<>nil) do begin
+      InsertarABO(A,l^.dato,aux^.dato);
+      aux:=aux^.sig;
+      end;
+    l:=l^.sig;
+  end;
+  end;
 
 procedure imprimirArbol(a:arbol);
 

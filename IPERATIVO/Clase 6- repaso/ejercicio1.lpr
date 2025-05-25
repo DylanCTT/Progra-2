@@ -1,6 +1,6 @@
 Program ejercicio1;
 Uses
-     sysutils;
+     sysutils, unit1;
 Type
      str10= string[10];
      jugador = record
