@@ -1,6 +1,6 @@
 Program tpgrupo21;
 Uses
-     sysutils, unit1;
+     sysutils;
 const
   inf=28000000;
   sup=32000000;

@@ -59,7 +59,7 @@ Type
      datoA=record
        DNI:longint;
        nombreapellido:str70;
-       seleccion1:str70;
+       seleccion:str70;
        totgoles:integer;
        partidos:listap;
      end;
