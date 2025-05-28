@@ -16,6 +16,7 @@ begin
   digitoMaximo:=max;
 end;
 
+
 function potencial (x,n:integer):integer;
 begin
   if (n=0)then
@@ -26,6 +27,7 @@ begin
   end;
 end;
 
+
 function factorial (x:integer):integer;
 begin
   if(x<=1) then
@@ -33,6 +35,7 @@ begin
   else
     factorial:= x*factorial(x-1);
 end;
+
 
 function BusquedaDicotomica (pri:integer;ult:integer;v:vector;dato:integer):integer;
 var
@@ -94,6 +97,8 @@ begin
                  end;
                end;
 end;
+
+{FIN DE IMPRIMIR POR NIVEL}
 
 function ContarElementos (l: listaNivel): integer;
   var c: integer;
